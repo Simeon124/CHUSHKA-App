@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using CHUSHKA.Models;
+using CHUSHKA.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CHUSHKA.Controllers
@@ -7,15 +8,17 @@ namespace CHUSHKA.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            this.productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(new ProductsViewModel() { products = productService.ListAll().Result});
         }
 
         public IActionResult Privacy()

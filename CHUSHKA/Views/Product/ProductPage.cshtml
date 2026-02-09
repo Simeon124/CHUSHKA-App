@@ -1,0 +1,23 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "ProductPage";
+}
+
+<h1>@Model.Name</h1>
+
+<hr>
+<br>
+
+<h2>Type: @Model.Type</h2>
+<h2>Price: @Model.Price</h2>
+
+<hr>
+<br>
+
+<h2>Description:</h2>
+<p>@Model.Description</p>
+
+@if(this.User.IsInRole("Admin"))
+{
+    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+}

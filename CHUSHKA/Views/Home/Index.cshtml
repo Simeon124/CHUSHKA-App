@@ -1,8 +1,43 @@
-﻿@{
+﻿@model ProductsViewModel;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (this.User.IsInRole("Admin"))
+    {
+        @if (!this.User.Identity.IsAuthenticated)
+        {
+            <h1 class="display-4">Welcome Anonymous! Login/Register to buy stuff</h1>
+        }
+        else
+        {
+            <h1 class="display-4">Welcome back! Check out those sick products:</h1>
+        }
+    }
+    else
+    {
+        <h1 class="display-4">Welcome back Admin! Glad you are back.</h1>
+    }
+
+    <hr>
+    <br />
+
+    @foreach (var product in Model.products.ToList())
+    {
+        if (!product.isDeleted)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description.Take(10)...</p>
+                    <a asp-controller="Product" asp-action="ProductPage" asp-route-id="@product.Id" href="#" class="btn btn-primary">See</a>
+                </div>
+            </div>
+        }
+    }
+
+
+
 </div>
