@@ -6,10 +6,16 @@ namespace CHUSHKA.Services
 {
     public class OrderService : IOrderService
     {
-        ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
+
+        public OrderService(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
         public async Task Create(Order newOrder)
         {
             await context.orders.AddAsync(newOrder);
+            context.SaveChanges();
         }
 
         public async Task<Order> GetById(Guid id)
@@ -24,12 +30,17 @@ namespace CHUSHKA.Services
 
         public void Update(Order edit)
         {
-            context.orders.Update(edit);
+            var choosenOrder = context.orders.FirstOrDefault(x => x.Id == edit.Id);
+
+            choosenOrder!.Client = edit.Client;
+            choosenOrder.Product = edit.Product;
+            context.SaveChanges();
         }
 
         public void DeleteById(Guid id)
         {
             context.orders.Find(id)!.isDeleted = true;
+            context.SaveChanges();
         }
     }
 }

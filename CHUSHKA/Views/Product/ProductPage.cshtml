@@ -17,7 +17,10 @@
 <h2>Description:</h2>
 <p>@Model.Description</p>
 
+<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<a asp-action="EditProductPage" asp-route-id="@Model.Id">Edit</a>
+
 @if(this.User.IsInRole("Admin"))
 {
-    <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    
 }

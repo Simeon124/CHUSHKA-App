@@ -4,7 +4,7 @@
 }
 
 <div class="text-center">
-    @if (this.User.IsInRole("Admin"))
+    @if (!this.User.IsInRole("Admin"))
     {
         @if (!this.User.Identity.IsAuthenticated)
         {
@@ -23,21 +23,22 @@
     <hr>
     <br />
 
-    @foreach (var product in Model.products.ToList())
+    @if(Model.products.Count > 0)
     {
-        if (!product.isDeleted)
+        @foreach (var product in Model.products.ToList())
         {
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">@product.Description.Take(10)...</p>
-                    <a asp-controller="Product" asp-action="ProductPage" asp-route-id="@product.Id" href="#" class="btn btn-primary">See</a>
+            if (!product.isDeleted)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="@product.Name Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">@String.Join("",product.Description.Take(25))...</p>
+                        <a asp-controller="Product" asp-action="ProductPage" asp-route-id="@product.Id" class="btn btn-primary">See</a>
+                    </div>
                 </div>
-            </div>
+            }
         }
+
     }
-
-
-
 </div>

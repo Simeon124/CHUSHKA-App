@@ -18,7 +18,8 @@ namespace CHUSHKA.Controllers
 
         public IActionResult Index()
         {
-            return View(new ProductsViewModel() { products = productService.ListAll().Result});
+            var productsViewModel = new ProductsViewModel() { products = productService.ListAll().Result };
+            return View(productsViewModel);
         }
 
         public IActionResult Privacy()
