@@ -18,7 +18,7 @@ namespace CHUSHKA.Controllers
 
         public IActionResult Index()
         {
-            var productsViewModel = new ProductsViewModel() { products = productService.ListAll().Result };
+            var productsViewModel = new ProductsViewModel() { products = productService.ListAllAsync().Result };
             return View(productsViewModel);
         }
 

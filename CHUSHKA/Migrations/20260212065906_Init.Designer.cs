@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CHUSHKA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260211101150_Init")]
+    [Migration("20260212065906_Init")]
     partial class Init
     {
         /// <inheritdoc />

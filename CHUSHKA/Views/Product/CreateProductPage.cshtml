@@ -7,41 +7,59 @@
 }
 
 <center>
-    <form class="form-control" style="padding-right: 20rem; padding-left: 20rem" asp-controller="Product" asp-action="CreateProduct" method="post">
-        <label class="col-form-label" asp-for="Name"></label>
-        <input class="input-group" type="text" name="Name" value="@Model.Name" />
-        <span class="alert-danger" asp-validation-for="Name"></span>
+    <form class="form-control" style="padding-right: 10rem; padding-left: 10rem" asp-controller="Product" asp-action="CreateProduct" method="post">
+        <div class="mb-3">
+            <label class="col-form-label fs-4" asp-for="Name"></label>
+            <input class="form-control" type="text" name="Name" value="@Model.Name" />
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        
 
         <br>
-        <label class="col-form-label" asp-for="Price"></label>
-        <input class="input-group" type="text" name="Price" value="@Model.Price" />
-        <span class="alert-danger" asp-validation-for="Price"></span>
+        <label class="col-form-label fs-4" asp-for="Price"></label>
+        <input class="form-control" type="text" name="Price" value="@Model.Price" />
+        <span class="text-danger" asp-validation-for="Price"></span>
 
         <br>
-        <label class="col-form-label" asp-for="Description"></label>
-        <input class="input-group" type="text" name="Description" value="@Model.Description" />
-        <span class="alert-danger" asp-validation-for="Description"></span>
+        <label class="col-form-label fs-4" asp-for="Description"></label>
+        <input class="form-control" type="text" name="Description" value="@Model.Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
 
         <br>
-        <label class="col-form-label" asp-for="Type"></label>
+        <label class="col-form-label fs-3" asp-for="Type"></label>
 
-        <div style="display:flex; flex-direction:row; justify-content:center">
-            <input class="form-check-input" type="radio" name="Type" value="0" />
-            <p>Food</p>
-            <input class="form-check-input" type="radio" name="Type" value="1" />
+        <div style="width:30rem; display:flex; flex-direction:row; justify-content:space-evenly">
+            <div class="mb-3 form-check">
+                <input class="form-check-input" type="checkbox" name="Type" value="0" />
+                <p>Food</p>
+             </div>
+
+            <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" name="Type" value="1" />
             <p>Domestic</p>
-            <input class="form-check-input" type="radio" name="Type" value="2" />
+            </div>
+
+            <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" name="Type" value="2" />
             <p>Health</p>
-            <input class="form-check-input" type="radio" name="Type" value="3" />
+            </div>
+
+            <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" name="Type" value="3" />
             <p>Cosmetic</p>
-            <input class="form-check-input" type="radio" name="Type" value="4" />
+            </div>
+
+            <div class="mb-3 form-check">
+            <input class="form-check-input" type="checkbox" name="Type" value="4" />
             <p>Other</p>
+            </div>
+
         </div>
 
 
         <span class="alert-danger" asp-validation-for="Type"></span>
 
-        <button type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Create</button>
     </form>
 </center>
 

@@ -1,5 +1,4 @@
-﻿using CHUSHKA.Migrations;
-using CHUSHKA.Models;
+﻿using CHUSHKA.Models;
 using CHUSHKA.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +12,10 @@ namespace CHUSHKA.Controllers
         {
             this.productService = productService;
         }
-        public IActionResult ProductPage(Guid id)
+        public async Task<IActionResult> ProductPage(Guid id)
         {
-            var product = productService.GetById(id);
-            return View(product.Result);
+            var product = await productService.GetByIdAsync(id);
+            return View(product);
         }
 
         public IActionResult Delete(Guid id)
@@ -30,21 +29,21 @@ namespace CHUSHKA.Controllers
             return View(input);
         }
 
-        public ActionResult CreateProduct(Product input)
+        public async Task<IActionResult> CreateProduct(Product input)
         {
             if (ModelState.IsValid == true)
             {
-                productService.Create(input);
+                await productService.CreateAsync(input);
                 return Redirect("/");
             }
             return View("CreateProductPage", input);
 
         }
 
-        public ActionResult EditProductPage(Guid id)
+        public async Task<ActionResult> EditProductPage(Guid id)
         {
-            var product = productService.GetById(id);
-            return View(product.Result);
+            var product = await productService.GetByIdAsync(id);
+            return View(product);
         }
 
         public ActionResult EditProduct(Product product)

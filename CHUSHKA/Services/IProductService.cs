@@ -4,9 +4,9 @@ namespace CHUSHKA.Services
 {
     public interface IProductService
     {
-        Task Create(Product newProduct);
-        Task<List<Product>> ListAll();
-        Task<Product> GetById(Guid id);
+        Task CreateAsync(Product newProduct);
+        Task<List<Product>> ListAllAsync();
+        Task<Product> GetByIdAsync(Guid id);
         void Update(Product edit);
         void DeleteById(Guid id);
     }

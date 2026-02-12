@@ -3,24 +3,37 @@
     ViewData["Title"] = "ProductPage";
 }
 
-<h1>@Model.Name</h1>
+<center>
+    <h1>@Model.Name</h1>
 
-<hr>
-<br>
+    <hr>
+    <br>
 
-<h2>Type: @Model.Type</h2>
-<h2>Price: @Model.Price</h2>
+    <div style="display:flex; flex-direction:row; justify-content: space-evenly">
+        <h2>Type: @Model.Type</h2>
+        <h2>Price: @Model.Price</h2>
+    </div>
 
-<hr>
-<br>
 
-<h2>Description:</h2>
-<p>@Model.Description</p>
+    <hr>
+    <br>
 
-<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-<a asp-action="EditProductPage" asp-route-id="@Model.Id">Edit</a>
+    <h2>Description:</h2>
+    <p>@Model.Description</p>
 
-@if(this.User.IsInRole("Admin"))
-{
-    
-}
+    <hr style="margin-bottom:10rem; margin-top:5rem;">
+
+    @if (this.User.Identity!.IsAuthenticated)
+    {
+        <button class="fs-2 btn btn-success" style="margin-bottom:3rem" asp-controller="Order" asp-action="MakeAnOrder" asp-route-productId="@Model.Id">Order</button>
+    }
+    <br />
+
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    <a class="btn btn-warning" asp-action="EditProductPage" asp-route-id="@Model.Id">Edit</a>
+
+    @if (this.User.IsInRole("Admin"))
+    {
+
+    }
+</center>

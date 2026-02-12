@@ -12,20 +12,20 @@ namespace CHUSHKA.Services
         {
             this.context = context;
         }
-        public async Task Create(Order newOrder)
+        public async Task CreateAsync(Order newOrder)
         {
             await context.orders.AddAsync(newOrder);
             context.SaveChanges();
         }
 
-        public async Task<Order> GetById(Guid id)
+        public async Task<Order> GetByIdAsync(Guid id)
         {
-            return await context.orders.FindAsync(id);
+            return await context.orders.FindAsync(id)!;
         }
 
-        public async Task<List<Order>> ListAll()
+        public async Task<List<Order>> ListAllAsync()
         {
-            return await context.orders.ToListAsync();
+            return await context.orders.Include(o => o.Product).Include(o => o.Client).ToListAsync();
         }
 
         public void Update(Order edit)

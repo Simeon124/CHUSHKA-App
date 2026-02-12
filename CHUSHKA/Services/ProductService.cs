@@ -12,7 +12,7 @@ namespace CHUSHKA.Services
         {
             this.context = context;
         }
-        public async Task Create(Product newProduct)
+        public async Task CreateAsync(Product newProduct)
         {
             await context.products.AddAsync(newProduct);
             context.SaveChanges();
@@ -24,12 +24,12 @@ namespace CHUSHKA.Services
             context.SaveChanges();
         }
 
-        public async Task<Product> GetById(Guid id)
+        public async Task<Product> GetByIdAsync(Guid id)
         {
             return await context.products.FindAsync(id);
         }
 
-        public async Task<List<Product>> ListAll()
+        public async Task<List<Product>> ListAllAsync()
         {
             return await context.products.ToListAsync();
         }
