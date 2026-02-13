@@ -6,6 +6,29 @@
     //ViewData["Title"] = "CreateProductPage";
 }
 
+<style>
+    center form
+    {
+        margin-top: 5rem;
+    }
+    center form button
+    {
+        background-color: rgb(11, 45, 114) !important;
+        font-weight: bold !important;
+    }
+    center form
+    {
+        background-color: rgb(9, 146, 194) !important;
+        border-color: rgb(10, 196, 224) !important;
+        box-shadow: 0rem 3rem 10rem rgb(9, 146, 194) !important;
+    }
+    label
+    {
+        font-weight: bold;
+        color: rgb(11, 45, 114);
+    }
+</style>
+
 <center>
     <form class="form-control" style="padding-right: 10rem; padding-left: 10rem" asp-controller="Product" asp-action="CreateProduct" method="post">
         <div class="mb-3">
@@ -59,7 +82,7 @@
 
         <span class="alert-danger" asp-validation-for="Type"></span>
 
-        <button class="btn btn-primary" type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">CREATE</button>
     </form>
 </center>
 

@@ -3,6 +3,23 @@
     ViewData["Title"] = "ProductPage";
 }
 
+<style>
+    .btn-danger
+    {
+        box-shadow: 0rem 0rem 2rem red !important;
+    }
+
+    .btn-warning
+    {
+        box-shadow: 0rem 0rem 2rem yellow !important;
+    }
+
+    .btn-success
+    {
+        box-shadow: 0rem 0rem 2rem green !important;
+    }
+</style>
+
 <center>
     <h1>@Model.Name</h1>
 
@@ -29,11 +46,9 @@
     }
     <br />
 
-    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-    <a class="btn btn-warning" asp-action="EditProductPage" asp-route-id="@Model.Id">Edit</a>
-
     @if (this.User.IsInRole("Admin"))
     {
-
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <a class="btn btn-warning" asp-action="EditProductPage" asp-route-id="@Model.Id">Edit</a>
     }
 </center>

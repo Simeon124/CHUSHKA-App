@@ -21,7 +21,7 @@ namespace CHUSHKA
             {
                 options.SignIn.RequireConfirmedAccount = true;
             }
-            ).AddEntityFrameworkStores<ApplicationDbContext>();
+            ).AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<IOrderService, OrderService>();
